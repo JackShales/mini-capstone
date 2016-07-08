@@ -2,12 +2,21 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 h2 {
+  font-family: Abadi, Sans-serif;
   text-align: center;
   font-size: 100px;
+}
+h3{
+  text-align: center;
+  font-size: 50px;
 }
 h4{
   margin-left: 50px;
   font-size: 25px;
+}
+h4.item{
+  margin-left: 50px;
+  font-size: 22px;
 }
 p{
   margin-left: 50px;

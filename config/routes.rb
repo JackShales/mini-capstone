@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
   get '/home' => 'drinks#all_products'
+  get '/cold_brew' => 'drinks#cold_brew'
+  get '/decaf_cold_brew' => 'drinks#decaf_cold_brew'
+  get '/black_tea' => 'drinks#black_tea'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
