@@ -1,0 +1,18 @@
+<h2>Drinks</h2>
+  <div>
+    <a href="/drinks/new">Add a drink</a>
+  </div>
+  <div>
+  <% @drinks.each do |drink| %>
+    <h4>
+      <a href="/drinks/<%= drink.id %>">
+        <%= drink.name + ", " + drink.price %>  
+      </a>
+    </h4>
+    <img src="<%= drink.image %>">
+    <p>
+      <%= drink.description %>
+    </p>
+    <br>
+  <% end %>
+  </div>

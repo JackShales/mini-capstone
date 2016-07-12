@@ -1,0 +1,12 @@
+<h4><%= @drink.name + ", " + @drink.price %></h4>
+<img src="<%= @drink.image %>">
+<p><%= @drink.description %></p>
+<div>
+  <a href="/drinks">Back to all drinks</a>
+</div>
+<div>
+  <a href="/drinks/<%= @drink.id %>/edit">Edit this drink</a>
+</div>
+<div>
+  <%= link_to "Delete drink", "/drinks/#{@drink.id}", method: :delete %>
+</div>

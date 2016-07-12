@@ -1,8 +1,12 @@
 Rails.application.routes.draw do
-  get '/home' => 'drinks#all_products'
-  get '/cold_brew' => 'drinks#cold_brew'
-  get '/decaf_cold_brew' => 'drinks#decaf_cold_brew'
-  get '/black_tea' => 'drinks#black_tea'
+  get '/drinks' => 'drinks#index'
+  get '/drinks/new' => 'drinks#new'
+  post '/drinks' => 'drinks#create'
+  get '/drinks/:id' => 'drinks#show'
+  get 'drinks/:id/edit' => 'drinks#edit'
+  patch '/drinks/:id' => 'drinks#update'
+  delete '/drinks/:id' => 'drinks#destroy'
+ 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

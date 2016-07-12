@@ -1,9 +1,0 @@
-<h2>Drinks</h2>
-  <br>
-  
-  <% @drinks.each do |drink| %>
-    <h4><%= drink.name + ", " + drink.price %></h4>
-    <img src="<%= drink.image %>">
-    <p><%= drink.description %></p>
-    <br>
-  <% end %>

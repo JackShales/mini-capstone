@@ -1,22 +1,48 @@
 class DrinksController < ApplicationController
-  def all_products
+  def index
     @drinks = Drink.all
-    render 'home.html.erb'
+    render 'index.html.erb'
   end
 
-  def cold_brew
-    @cold_brew = Drink.first
-    render 'cold_brew.html.erb'
+  def show
+    @drink = Drink.find_by(id: params[:id])
+    render 'show.html.erb'
   end
 
-  def decaf_cold_brew
-    @decaf_cold_brew = Drink.second
-    render 'decaf_cold_brew.html.erb'
+  def new
+    render 'new.html.erb'
   end
 
-  def black_tea
-    @black_tea = Drink.third
-    render 'black_tea.html.erb'
+  def create
+    drink = Drink.create(
+      name: params[:name], 
+      price: params[:price], 
+      image: params[:image], 
+      description: params[:description]
+    )
+    render 'create.html.erb'
+  end
+
+  def edit
+    @drink = Drink.find_by(id: params[:id])
+    render 'edit.html.erb'
+  end
+
+  def update
+    @drink = Drink.find_by(id: params[:id])
+    @drink.update(
+      name: params[:name],
+      price: params[:price],
+      image: params[:image],
+      description: params[:description]
+    )
+    render 'update.html.erb'
+  end
+
+  def destroy
+    @drink = Drink.find_by(id: params[:id])
+    @drink.destroy
+    render 'destroy.html.erb'
   end
 end
 
