@@ -37,7 +37,7 @@ class DrinksController < ApplicationController
       image: params[:image],
       description: params[:description]
     )
-    flash[:success] = "Drink successfully <strong>updated</strong>!"
+    flash[:info] = "Drink successfully <strong>updated</strong>!"
     redirect_to "/drinks/#{@drink.id}"
   end
 
