@@ -20,7 +20,7 @@ class DrinksController < ApplicationController
       image: params[:image], 
       description: params[:description]
     )
-    flash[:success] = "Drink successfully created!"
+    flash[:success] = "Drink successfully <strong>created</strong>!"
     redirect_to "/drinks/#{drink.id}"
   end
 
@@ -37,14 +37,14 @@ class DrinksController < ApplicationController
       image: params[:image],
       description: params[:description]
     )
-    flash[:success] = "Drink successfully updated!"
+    flash[:success] = "Drink successfully <strong>updated</strong>!"
     redirect_to "/drinks/#{@drink.id}"
   end
 
   def destroy
     @drink = Drink.find_by(id: params[:id])
     @drink.destroy
-    flash[:danger] = "Drink successfully deleted..."
+    flash[:danger] = "Drink successfully <strong>deleted</strong>..."
     redirect_to "/drinks"
   end
 end
