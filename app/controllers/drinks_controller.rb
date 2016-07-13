@@ -20,7 +20,7 @@ class DrinksController < ApplicationController
       image: params[:image], 
       description: params[:description]
     )
-    render 'create.html.erb'
+    redirect_to "/drinks/#{drink.id}"
   end
 
   def edit
@@ -36,13 +36,13 @@ class DrinksController < ApplicationController
       image: params[:image],
       description: params[:description]
     )
-    render 'update.html.erb'
+    redirect_to "/drinks/#{@drink.id}"
   end
 
   def destroy
     @drink = Drink.find_by(id: params[:id])
     @drink.destroy
-    render 'destroy.html.erb'
+    redirect_to "/drinks"
   end
 end
 
