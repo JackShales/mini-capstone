@@ -1,34 +1,27 @@
 // Place all the styles related to the Drinks controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-h2 {
-  font-family: Abadi, Sans-serif;
-  text-align: center;
-  font-size: 100px;
+body{
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, sans-serif;
+  background-image: image-url("sayagata-400px.png");
 }
-h3{
-  text-align: center;
-  font-size: 50px;
-}
-h4{
-  font-size: 25px;
-}
-h4.item{
-  margin-left: 50px;
-  font-size: 22px;
-}
-p{
-  font-size: 20px;
-  text-align: center;
-}
-img{
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  height: 25%;
-  width: 25%
+.well img{
+  width: 100%
 }
 a{
-  margin-left: 50px;
-  font-size: 20px;
+  color: Black;
+}
+a:hover{
+  color: Gray;
+  text-decoration: none;
+}
+h2.index{
+  text-align: center;
+  font-size: 40px;
+}
+h4.index{
+  text-align: center;
+}
+p.index{
+  text-align: center;
 }
