@@ -8,7 +8,8 @@
           <h4 class="index">
             <a href="/drinks/<%= drink.id %>"><%= "#{drink.name}, $#{drink.price}" %> </a>
           </h4>
-          <img src="<%= drink.image %>">
+          <p><%= drink.supplier.name %></p>
+          <img src="<%= drink.images[0].url %>">
           <p class="index"><%= drink.description %></p>
           <% if drink.in_stock %>
             <p>IN STOCK</p>

@@ -10,6 +10,7 @@ class DrinksController < ApplicationController
 
   def show
     @drink = Drink.find_by(id: params[:id])
+    @images = @drink.images
     render 'show.html.erb'
   end
 

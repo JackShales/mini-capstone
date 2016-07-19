@@ -1,6 +1,7 @@
 class Drink < ActiveRecord::Base
   belongs_to :supplier
-  
+  has_many :images
+
   def sale_message
     if price > 2.00
       message = "Premium Item"

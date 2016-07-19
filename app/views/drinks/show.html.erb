@@ -1,4 +1,5 @@
 <h4><%= @drink.name %></h4>
+<p><%= @drink.supplier.name %></p>
 <% if @drink.in_stock %>
   <p>IN STOCK</p>
 <% else %>
@@ -9,7 +10,9 @@
 <p>Tax: <%= number_to_currency(@drink.tax) %></p>
 <p>----------</p>
 <p>Total: <%= number_to_currency(@drink.total) %></p>
-<img src="<%= @drink.image %>">
+<% @images.each do |image| %>
+  <img src="<%= image.url %>">
+<% end %>
 <p><%= @drink.description %></p>
 <div>
   <a href="/drinks/<%= @drink.id %>/edit">Edit this drink</a>
