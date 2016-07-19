@@ -1,6 +1,10 @@
 class DrinksController < ApplicationController
   def index
-    @drinks = Drink.all
+    if params[:sort] && params[:order]
+      @drinks = Drink.order(params[:sort] => params[:order])
+    else
+      @drinks = Drink.order(:created_at)
+    end
     render 'index.html.erb'
   end
 
@@ -18,7 +22,8 @@ class DrinksController < ApplicationController
       name: params[:name], 
       price: params[:price], 
       image: params[:image], 
-      description: params[:description]
+      description: params[:description],
+      in_stock: true
     )
     flash[:success] = "Drink successfully <strong>created</strong>!"
     redirect_to "/drinks/#{drink.id}"
@@ -46,6 +51,11 @@ class DrinksController < ApplicationController
     @drink.destroy
     flash[:danger] = "Drink successfully <strong>deleted</strong>..."
     redirect_to "/drinks"
+  end
+
+  def discount
+    @drinks = Drink.where("price < ?", 2.00)
+    render 'index.html.erb'
   end
 end
 

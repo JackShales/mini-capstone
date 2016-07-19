@@ -1,4 +1,4 @@
-<h2 class="index">All Drinks</h2>
+<h2 class="index">Drinks</h2>
 <br>
 <% @drinks.each_slice(3) do |three_drinks| %>
   <div class="row">
@@ -6,10 +6,15 @@
       <div class="col-md-4">
         <div class="well">
           <h4 class="index">
-            <a href="/drinks/<%= drink.id %>"><%= drink.name + ", " + drink.price %> </a>
+            <a href="/drinks/<%= drink.id %>"><%= "#{drink.name}, $#{drink.price}" %> </a>
           </h4>
           <img src="<%= drink.image %>">
           <p class="index"><%= drink.description %></p>
+          <% if drink.in_stock %>
+            <p>IN STOCK</p>
+          <% else %>
+            <p>OUT OF STOCK</p>
+          <% end %>
         </div>
       </div>
     <% end %>

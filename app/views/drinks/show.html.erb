@@ -1,4 +1,14 @@
-<h4><%= @drink.name + ", " + @drink.price %></h4>
+<h4><%= @drink.name %></h4>
+<% if @drink.in_stock %>
+  <p>IN STOCK</p>
+<% else %>
+  <p>OUT OF STOCK</p>
+<% end %>
+<h5><%= @drink.sale_message %></h5>
+<p class="<%= @drink.price_class_name %>">Subtotal: <%= number_to_currency(@drink.price) %></p>
+<p>Tax: <%= number_to_currency(@drink.tax) %></p>
+<p>----------</p>
+<p>Total: <%= number_to_currency(@drink.total) %></p>
 <img src="<%= @drink.image %>">
 <p><%= @drink.description %></p>
 <div>
