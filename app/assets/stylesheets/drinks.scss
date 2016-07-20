@@ -5,8 +5,13 @@ body{
   font-family: "Gill Sans", "Gill Sans MT", Calibri, sans-serif;
   background-image: image-url("sayagata-400px.png");
 }
+img{
+  max-width: 100%;
+  height: auto;
+}
 .well img{
-  width: 100%
+  width: 100%;
+  height: auto;
 }
 a{
   color: Black;

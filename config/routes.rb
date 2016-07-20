@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get '/' => 'drinks#index'
   get '/drinks' => 'drinks#index'
   get '/drinks/new' => 'drinks#new'
   get '/drinks/discount' => 'drinks#discount'
@@ -7,6 +8,16 @@ Rails.application.routes.draw do
   get 'drinks/:id/edit' => 'drinks#edit'
   patch '/drinks/:id' => 'drinks#update'
   delete '/drinks/:id' => 'drinks#destroy'
+  # garbage routes, work but should refactor
+  get '/drinks/:id/add_image' => 'drinks#add_image'
+  post '/images' => 'images#create'
+  # authentication routes
+  get '/signup' => 'users#new'
+  post '/users' => 'users#create'
+
+  get '/login' => 'sessions#new'
+  post '/login' => 'sessions#create'
+  get '/logout' => 'sessions#destroy'
 
  
   # The priority is based upon order of creation: first created -> highest priority.

@@ -1,21 +1,28 @@
 <h4><%= @drink.name %></h4>
 <p><%= @drink.supplier.name %></p>
+
 <% if @drink.in_stock %>
   <p>IN STOCK</p>
 <% else %>
   <p>OUT OF STOCK</p>
 <% end %>
+
 <h5><%= @drink.sale_message %></h5>
 <p class="<%= @drink.price_class_name %>">Subtotal: <%= number_to_currency(@drink.price) %></p>
 <p>Tax: <%= number_to_currency(@drink.tax) %></p>
 <p>----------</p>
 <p>Total: <%= number_to_currency(@drink.total) %></p>
+
 <% @images.each do |image| %>
   <img src="<%= image.url %>">
 <% end %>
+
 <p><%= @drink.description %></p>
 <div>
   <a href="/drinks/<%= @drink.id %>/edit">Edit this drink</a>
+</div>
+<div>
+  <a href="/drinks/<%= @drink.id %>/add_image">Add an image</a>
 </div>
 <div>
   <%= link_to "Delete drink", "/drinks/#{@drink.id}", method: :delete %>

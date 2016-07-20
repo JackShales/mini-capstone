@@ -21,8 +21,7 @@ class DrinksController < ApplicationController
   def create
     drink = Drink.create(
       name: params[:name], 
-      price: params[:price], 
-      image: params[:image], 
+      price: params[:price],  
       description: params[:description],
       in_stock: true
     )
@@ -57,6 +56,11 @@ class DrinksController < ApplicationController
   def discount
     @drinks = Drink.where("price < ?", 2.00)
     render 'index.html.erb'
+  end
+
+  def add_image
+    @drink = Drink.find_by(id: params[:id])
+    render 'add_image.html.erb'
   end
 end
 
