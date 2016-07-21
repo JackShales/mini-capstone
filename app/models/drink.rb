@@ -1,5 +1,6 @@
 class Drink < ActiveRecord::Base
   belongs_to :supplier
+  has_many :orders
   has_many :images
 
   def sale_message

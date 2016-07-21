@@ -18,6 +18,33 @@
 <% end %>
 
 <p><%= @drink.description %></p>
+
+<%= form_tag '/orders', method: :post do %>
+  <div class="form-group">
+    <%= label_tag :quantity %>
+    <%= text_field_tag :quantity, '', class: "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= label_tag :product_id %>
+    <%= text_field_tag :product_id, @drink.id, class: "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= label_tag :subtotal %>
+    <%= text_field_tag :subtotal, @drink.price, class: "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= label_tag :tax %>
+    <%= text_field_tag :tax, @drink.tax, class: "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= label_tag :total %>
+    <%= text_field_tag :total, @drink.total, class: "form-control" %>
+  </div>
+  <div>
+    <%= submit_tag "Buy now", class: "btn btn-default" %>
+  </div>
+<% end %>
+
 <div>
   <a href="/drinks/<%= @drink.id %>/edit">Edit this drink</a>
 </div>

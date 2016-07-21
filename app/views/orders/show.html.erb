@@ -1,0 +1,10 @@
+<h2>Here is your order</h2>
+<p><%= @order.id %></p>
+<p><%= @order.quantity %></p>
+<p><%= @order.subtotal %></p>
+<p><%= @order.tax %></p>
+<p><%= @order.total %></p>
+<p><%= current_user.email %></p>
+<p><%= @drink.name %></p>
+<img src="<%= @drink.images[0].url %>">
+<p><%= @order.created_at %></p>
