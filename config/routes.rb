@@ -19,7 +19,7 @@ Rails.application.routes.draw do
   post '/login' => 'sessions#create'
   get '/logout' => 'sessions#destroy'
   # order routes
-  post '/orders' => 'orders#create'
+  post '/orders/:id' => 'orders#create'
 
  
   # The priority is based upon order of creation: first created -> highest priority.

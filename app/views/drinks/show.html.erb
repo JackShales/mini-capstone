@@ -19,14 +19,10 @@
 
 <p><%= @drink.description %></p>
 
-<%= form_tag '/orders', method: :post do %>
+<%= form_tag "/orders/#{@drink.id}", method: :post do %>
   <div class="form-group">
     <%= label_tag :quantity %>
     <%= text_field_tag :quantity, '', class: "form-control" %>
-  </div>
-  <div class="form-group">
-    <%= label_tag :product_id %>
-    <%= text_field_tag :product_id, @drink.id, class: "form-control" %>
   </div>
   <div class="form-group">
     <%= label_tag :subtotal %>

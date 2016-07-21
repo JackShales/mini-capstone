@@ -23,6 +23,7 @@ class DrinksController < ApplicationController
       name: params[:name], 
       price: params[:price],  
       description: params[:description],
+      supplier_id: params[:supplier_id],
       in_stock: true
     )
     flash[:success] = "Drink successfully <strong>created</strong>!"
@@ -39,7 +40,6 @@ class DrinksController < ApplicationController
     @drink.update(
       name: params[:name],
       price: params[:price],
-      image: params[:image],
       description: params[:description]
     )
     flash[:info] = "Drink successfully <strong>updated</strong>!"
