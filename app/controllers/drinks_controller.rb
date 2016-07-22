@@ -26,6 +26,10 @@ class DrinksController < ApplicationController
       supplier_id: params[:supplier_id],
       in_stock: true
     )
+    image = Image.create(
+      drink_id: drink.id,
+      url: params[:image_url]
+    )
     flash[:success] = "Drink successfully <strong>created</strong>!"
     redirect_to "/drinks/#{drink.id}"
   end
@@ -56,11 +60,6 @@ class DrinksController < ApplicationController
   def discount
     @drinks = Drink.where("price < ?", 2.00)
     render 'index.html.erb'
-  end
-
-  def add_image
-    @drink = Drink.find_by(id: params[:id])
-    render 'add_image.html.erb'
   end
 end
 

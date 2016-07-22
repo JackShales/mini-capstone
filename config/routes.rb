@@ -8,8 +8,8 @@ Rails.application.routes.draw do
   get 'drinks/:id/edit' => 'drinks#edit'
   patch '/drinks/:id' => 'drinks#update'
   delete '/drinks/:id' => 'drinks#destroy'
-  # garbage routes, work but should refactor
-  get '/drinks/:id/add_image' => 'drinks#add_image'
+  # image routes
+  get '/images/:id/new' => 'images#new'
   post '/images' => 'images#create'
   # authentication routes
   get '/signup' => 'users#new'
@@ -20,6 +20,7 @@ Rails.application.routes.draw do
   get '/logout' => 'sessions#destroy'
   # order routes
   post '/orders/:id' => 'orders#create'
+  get '/orders/:id' => 'orders#show'
 
  
   # The priority is based upon order of creation: first created -> highest priority.

@@ -1,10 +1,8 @@
-<h2>Here is your order</h2>
-<p><%= @order.id %></p>
-<p><%= @order.quantity %></p>
-<p><%= @order.subtotal %></p>
-<p><%= @order.tax %></p>
-<p><%= @order.total %></p>
-<p><%= current_user.email %></p>
-<p><%= @drink.name %></p>
-<img src="<%= @drink.images[0].url %>">
-<p><%= @order.created_at %></p>
+<h4>Here is the info for your order of <%= @order.drink.name %> on <%= @order.friendly_created_at %></h4>
+<img src="<%= @order.drink.images[0].url %>">
+<p>Order id--<%= @order.id + 430986 %></p>
+<p>Quantity--<%= @order.quantity %></p>
+<p>Subtotal--<%= number_to_currency(@order.subtotal) %></p>
+<p>Tax--<%= number_to_currency(@order.tax) %></p>
+<p>Total--<%= number_to_currency(@order.total) %></p>
+<p>Your E-mail Address--<%= current_user.email %></p>

@@ -24,18 +24,6 @@
     <%= label_tag :quantity %>
     <%= text_field_tag :quantity, '', class: "form-control" %>
   </div>
-  <div class="form-group">
-    <%= label_tag :subtotal %>
-    <%= text_field_tag :subtotal, @drink.price, class: "form-control" %>
-  </div>
-  <div class="form-group">
-    <%= label_tag :tax %>
-    <%= text_field_tag :tax, @drink.tax, class: "form-control" %>
-  </div>
-  <div class="form-group">
-    <%= label_tag :total %>
-    <%= text_field_tag :total, @drink.total, class: "form-control" %>
-  </div>
   <div>
     <%= submit_tag "Buy now", class: "btn btn-default" %>
   </div>
@@ -45,7 +33,7 @@
   <a href="/drinks/<%= @drink.id %>/edit">Edit this drink</a>
 </div>
 <div>
-  <a href="/drinks/<%= @drink.id %>/add_image">Add an image</a>
+  <a href="/images/<%= @drink.id %>/new">Add an image</a>
 </div>
 <div>
   <%= link_to "Delete drink", "/drinks/#{@drink.id}", method: :delete %>
