@@ -2,6 +2,10 @@ class DrinksController < ApplicationController
   def index
     if params[:sort] && params[:order]
       @drinks = Drink.order(params[:sort] => params[:order])
+    elsif params[:category]
+      @drinks = Category.find_by(name: params[:category]).drinks
+    elsif params[:search_terms]
+      @drinks = Drink.where("name LIKE ?", "%#{params[:search_terms].capitalize}%")
     else
       @drinks = Drink.order(:created_at)
     end
@@ -59,6 +63,11 @@ class DrinksController < ApplicationController
 
   def discount
     @drinks = Drink.where("price < ?", 2.00)
+    render 'index.html.erb'
+  end
+
+  def run_search
+    @products = Product.where("name LIKE ?", "%#{params[:search_terms]}%")
     render 'index.html.erb'
   end
 end

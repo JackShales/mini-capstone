@@ -1,5 +1,10 @@
-<h4><%= @drink.name %></h4>
+<h3><%= @drink.name %></h3>
 <p><%= @drink.supplier.name %></p>
+
+<h4>Categories:</h4>
+<% @drink.categories.each do |category| %>
+  <p><%= category.name %></p>
+<% end %>
 
 <% if @drink.in_stock %>
   <p>IN STOCK</p>
@@ -19,13 +24,13 @@
 
 <p><%= @drink.description %></p>
 
-<%= form_tag "/orders/#{@drink.id}", method: :post do %>
+<%= form_tag "/cart/#{@drink.id}", method: :post do %>
   <div class="form-group">
     <%= label_tag :quantity %>
     <%= text_field_tag :quantity, '', class: "form-control" %>
   </div>
   <div>
-    <%= submit_tag "Buy now", class: "btn btn-default" %>
+    <%= submit_tag "Add to Cart", class: "btn btn-default" %>
   </div>
 <% end %>
 

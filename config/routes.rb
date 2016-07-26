@@ -19,8 +19,12 @@ Rails.application.routes.draw do
   post '/login' => 'sessions#create'
   get '/logout' => 'sessions#destroy'
   # order routes
-  post '/orders/:id' => 'orders#create'
-  get '/orders/:id' => 'orders#show'
+  post '/orders/' => 'orders#create'
+  get '/orders/:id/' => 'orders#show'
+  # cart routes
+  get '/cart' => 'carted_products#index'
+  post '/cart/:id' => 'carted_products#create'
+  delete '/cart' => 'carted_products#destroy'
 
  
   # The priority is based upon order of creation: first created -> highest priority.

@@ -1,7 +1,10 @@
 class Drink < ActiveRecord::Base
   belongs_to :supplier
-  has_many :orders
   has_many :images
+  has_many :categorized_drinks
+  has_many :categories, through: :categorized_drinks
+  has_many :carted_products
+  has_many :orders, through: :carted_products
 
   def sale_message
     if price > 2.00

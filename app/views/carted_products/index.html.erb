@@ -1,0 +1,29 @@
+<h1>Your Cart</h1>
+
+    <% @cart.each do |carted_product| %>
+      <% if carted_product.status == "carted" %>
+        <div class="col-md-4">
+          <div class="well">
+            <h4 class="index"><%= "" %></h4>
+            <p><%= carted_product.drink.name %></p>
+            <p>Quantity: <%= carted_product.quantity %></p>
+            <img src="<%= carted_product.drink.images.first.url %>">
+            <p class="index"><%= carted_product.drink.description %></p>
+            <%= form_tag "/cart", method: :delete do %>
+              <div class="form-group">
+              <%= hidden_field_tag :product_id, carted_product.id, class: "form-control"  %>
+              </div>
+              <div>
+              <%= submit_tag "Delete item", class: "btn btn-default" %>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+
+<%= form_tag "/orders", method: :post do %>
+  <div>
+    <%= submit_tag "Buy Now!", class: "btn btn-default" %>
+  </div>
+<% end %>
