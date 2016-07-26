@@ -1,13 +1,19 @@
 <h4>Here is the info for your order on <%= @order.friendly_created_at %></h4>
 <p>Order id--<%= @order.id + 430986 %></p>
+
 <br>
+
 <p>Items:</p>
 <% @bought.each do |item| %>
   <p><%= item.drink.name + "---" + item.quantity.to_s %></p>
 <% end %>
+
 <br>
+
 <p>Subtotal: <%= number_to_currency(@order.subtotal) %></p>
 <p>Tax: <%= number_to_currency(@order.tax) %></p>
 <p>Total: <%= number_to_currency(@order.total) %></p>
+
 <br>
+
 <p>Your E-mail Address--<%= current_user.email %></p>
