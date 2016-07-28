@@ -1,4 +1,6 @@
 class ImagesController < ApplicationController
+  before_action :authenticate_admin!
+
   def new
     @drink = Drink.find_by(id: params[:id])
     render 'new.html.erb'

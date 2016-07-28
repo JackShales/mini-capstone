@@ -24,7 +24,9 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li class="active"><a href="/drinks/new"> New Drink Submission <span class="sr-only">(current)</span></a></li>
+        <% if current_user && current_user.admin %>
+          <li class="active"><a href="/drinks/new"> New Drink Submission <span class="sr-only">(current)</span></a></li>
+        <% end %>
         <li class="active"><a href="/drinks/discount"> Discount Drinks <span class="sr-only">(current)</span></a></li>
         <li class="active"><a href="/drinks/<%= Drink.all.sample.id %>"> Random Drink <span class="sr-only">(current)</span></a></li>
         <li class="dropdown">
@@ -34,9 +36,9 @@
             <li role="separator" class="divider"></li>
             <li><a href="/drinks?sort=price&order=desc">Descending Price</a></li>
             <li role="separator" class="divider"></li>
-            <li><a href="/drinks/?sort=name&order=asc">Acsending Alphabetical</a></li>
+            <li><a href="/drinks?sort=name&order=asc">Acsending Alphabetical</a></li>
             <li role="separator" class="divider"></li>
-            <li><a href="/drinks/?sort=name&order=desc">Descending Alphabetical</a></li>
+            <li><a href="/drinks?sort=name&order=desc">Descending Alphabetical</a></li>
           </ul>
         </li> 
       </ul>

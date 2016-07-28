@@ -1,4 +1,6 @@
 class DrinksController < ApplicationController
+  before_action :authenticate_admin!, except: [:index, :show, :discount, :run_search]
+
   def index
     if params[:sort] && params[:order]
       @drinks = Drink.order(params[:sort] => params[:order])
@@ -19,23 +21,34 @@ class DrinksController < ApplicationController
   end
 
   def new
+    @drink = Drink.new
+    @image = Image.new
     render 'new.html.erb'
   end
 
   def create
-    drink = Drink.create(
+    @drink = Drink.new(
       name: params[:name], 
       price: params[:price],  
       description: params[:description],
       supplier_id: params[:supplier_id],
       in_stock: true
     )
-    image = Image.create(
-      drink_id: drink.id,
-      url: params[:image_url]
-    )
-    flash[:success] = "Drink successfully <strong>created</strong>!"
-    redirect_to "/drinks/#{drink.id}"
+    if @drink.save
+      @image = Image.new(
+        drink_id: @drink.id,
+        url: params[:image_url]
+      )
+    end
+   
+    if @image
+      @image.save
+      flash[:success] = "Drink successfully <strong>created</strong>!"
+      redirect_to "/drinks/#{@drink.id}"
+    else
+      @image = Image.new
+      render 'new.html.erb'
+    end
   end
 
   def edit
@@ -45,13 +58,16 @@ class DrinksController < ApplicationController
 
   def update
     @drink = Drink.find_by(id: params[:id])
-    @drink.update(
+    if @drink.update(
       name: params[:name],
       price: params[:price],
       description: params[:description]
     )
-    flash[:info] = "Drink successfully <strong>updated</strong>!"
-    redirect_to "/drinks/#{@drink.id}"
+      flash[:info] = "Drink successfully <strong>updated</strong>!"
+      redirect_to "/drinks/#{@drink.id}"
+    else
+      render 'edit.html.erb'
+    end
   end
 
   def destroy

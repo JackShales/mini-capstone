@@ -24,25 +24,33 @@
 
 <p><%= @drink.description %></p>
 
-<%= form_tag "/cart/#{@drink.id}", method: :post do %>
-  <div class="form-group">
-    <%= label_tag :quantity %>
-    <%= text_field_tag :quantity, '', class: "form-control" %>
-  </div>
-  <div>
-    <%= submit_tag "Add to Cart", class: "btn btn-default" %>
-  </div>
+<% if current_user %>
+  <%= form_tag "/cart/#{@drink.id}", method: :post do %>
+    <div class="form-group">
+      <%= label_tag :quantity %>
+      <%= text_field_tag :quantity, '', class: "form-control" %>
+    </div>
+    <div>
+      <%= submit_tag "Add to Cart", class: "btn btn-default" %>
+    </div>
+  <% end %>
 <% end %>
-
-<div>
-  <a href="/drinks/<%= @drink.id %>/edit">Edit this drink</a>
-</div>
-<div>
-  <a href="/images/<%= @drink.id %>/new">Add an image</a>
-</div>
-<div>
-  <%= link_to "Delete drink", "/drinks/#{@drink.id}", method: :delete %>
-</div>
-<div>
-  <a href="/drinks">Back to all drinks</a>
-</div>
+<% if current_user && current_user.admin %>
+  <%= form_tag "/drinks/#{@drink.id}/edit", method: :get do %>
+     <div>
+      <%= submit_tag "Edit Drink", class: "btn btn-default" %>
+    </div>
+  <% end %>
+  
+  <%= form_tag "/images/#{@drink.id}/new", method: :get do %>
+     <div>
+      <%= submit_tag "Add Image", class: "btn btn-default" %>
+    </div>
+  <% end %>
+  
+  <%= form_tag "/drinks/#{@drink.id}", method: :delete do %>
+     <div>
+      <%= submit_tag "Delete Drink", class: "btn btn-default" %>
+    </div>
+  <% end %>
+<% end %>
